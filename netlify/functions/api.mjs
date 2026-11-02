@@ -44,6 +44,7 @@ export default async (req) => {
   const [a, b, c] = route.split('/');
   try {
     // ---------- public ----------
+    if (route === 'config' && m === 'GET') return J({ supabaseUrl: process.env.SUPABASE_URL || '', supabaseAnonKey: process.env.SUPABASE_ANON_KEY || '' });
     if (route === 'jobs' && m === 'GET') {
       const jobs = (await rd('jobs', [])).filter(j => j.active).sort((x, y) => y.ts - x.ts);
       return J({ jobs: jobs.map(j => Object.fromEntries(PUB.map(k => [k, j[k]]))) });
@@ -62,7 +63,7 @@ export default async (req) => {
       await st().set('resume/' + id, await f.arrayBuffer(), { metadata: { name: S(f.name, 120), type: f.type || 'application/octet-stream' } });
       apps.push({ id, jobId: job.id, name, phone, email, ts: Date.now(), file: S(f.name, 120) });
       await wr('apps', apps);
-      return J({ ok: true });
+      return J({ ok: true, id });
     }
     if (route === 'premium' && m === 'POST') {
       if (rzpOn()) return E('Please use the Pay option on the Premium form');

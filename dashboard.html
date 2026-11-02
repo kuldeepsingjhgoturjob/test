@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My Account – Got UR Job</title>
+<meta name="robots" content="noindex,nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="account.css">
+</head><body data-page="dashboard">
+<header><div class="wrap"><a class="brand" href="index.html" aria-label="Got UR Job home"><img class="blogo" src="assets/logo.png" alt="Got UR Job – Connecting Talent With Opportunity" width="259" height="54"></a>
+<nav><a href="index.html">Home</a><a href="jobs.html">Jobs</a><a href="services.html">Services</a><a href="employers.html">For Employers</a><a href="premium.html">Premium</a><a href="about.html">About</a><a href="contact.html">Contact</a><a class="nb" href="apply.html">Apply</a></nav><button class="mb" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button></div></header>
+<main id="top">
+<div class="phero"><div class="wrap"><div class="crumb"><a href="index.html">Home</a> / My account</div><h1 id="welcome">Loading your account…</h1><p><span id="account-email"></span> · <button type="button" class="linkbtn" id="logout">Log out</button></p></div></div>
+<section><div class="wrap">
+<p class="msg" id="page-msg" role="alert" hidden></p>
+<div class="tabs" role="tablist">
+<button class="tab on" role="tab" type="button" data-tab="profile" aria-selected="true">Profile</button>
+<button class="tab" role="tab" type="button" data-tab="resume" aria-selected="false">Resume</button>
+<button class="tab" role="tab" type="button" data-tab="jobs" aria-selected="false">Find jobs</button>
+<button class="tab" role="tab" type="button" data-tab="applications" aria-selected="false">My applications</button>
+<button class="tab" role="tab" type="button" data-tab="saved" aria-selected="false">Saved jobs</button>
+</div>
+
+<div data-panel="profile" class="auth-panel">
+<div class="meter" id="meter" role="progressbar" aria-label="Profile completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="meter-fill"></span></div>
+<p class="note" id="meter-text"></p>
+<form id="profile-form" novalidate>
+<label class="full">Full name *<input name="full_name" required maxlength="80" autocomplete="name"></label>
+<label class="full">Phone / WhatsApp (with country code) *<input name="phone" type="tel" required placeholder="+91 98765 43210" autocomplete="tel"></label>
+<label>City<input name="city" maxlength="80" autocomplete="address-level2"></label>
+<label>State<input name="state" maxlength="80" autocomplete="address-level1"></label>
+<label class="full">Headline<input name="headline" maxlength="120" placeholder="e.g. Sales executive with 3 years in FMCG"></label>
+<label class="full">Skills<textarea name="skills" rows="2" maxlength="600" placeholder="e.g. Excel, Tally, customer handling"></textarea></label>
+<label>Highest education<input name="education" maxlength="200"></label>
+<label>Years of experience<input name="experience_years" type="number" min="0" max="60" step="0.5" inputmode="decimal"></label>
+<label>Preferred job location<input name="preferred_location" maxlength="200" placeholder="e.g. Mohali, Chandigarh, remote"></label>
+<label>Expected salary (per month, INR)<input name="expected_salary_inr" type="number" min="0" max="100000000" step="1" inputmode="numeric"></label>
+<p class="msg" id="profile-msg" role="alert" hidden></p>
+<div class="acts full"><button type="submit" class="btn" id="profile-submit">Save profile</button></div>
+</form>
+</div>
+
+<div data-panel="resume" class="auth-panel" hidden>
+<form id="resume-form" novalidate>
+<label class="full">Upload a resume (PDF or Word, up to 4 MB)<input type="file" id="resume-file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required></label>
+<p class="msg" id="resume-msg" role="alert" hidden></p>
+<div class="acts full"><button type="submit" class="btn" id="resume-submit">Upload resume</button></div>
+</form>
+<ul class="rowlist" id="resume-list"></ul>
+</div>
+
+<div data-panel="jobs" class="auth-panel" hidden>
+<label class="full">Search jobs<input id="job-search" type="search" placeholder="Job title, company or city"></label>
+<p class="msg" id="job-msg" role="alert" hidden></p>
+<ul class="rowlist" id="job-list"></ul>
+<div id="apply-panel" class="apply-panel" hidden>
+<form id="apply-form" novalidate>
+<h2 class="authh" id="apply-title"></h2>
+<label class="full">Resume to send<select id="apply-resume"></select></label>
+<p class="msg" id="apply-msg" role="alert" hidden></p>
+<div class="acts full"><button type="submit" class="btn" id="apply-submit">Submit application</button><button type="button" class="btn ghost" id="apply-cancel">Cancel</button></div>
+</form>
+</div>
+</div>
+
+<div data-panel="applications" class="auth-panel" hidden>
+<p class="msg" id="application-msg" role="alert" hidden></p>
+<ul class="rowlist" id="application-list"></ul>
+</div>
+
+<div data-panel="saved" class="auth-panel" hidden>
+<p class="msg" id="saved-msg" role="alert" hidden></p>
+<ul class="rowlist" id="saved-list"></ul>
+</div>
+</div></section>
+</main>
+<a class="wafab" href="https://wa.me/919991120155">WhatsApp us</a>
+<footer><div class="fnav"><a href="index.html">Home</a><a href="jobs.html">Jobs</a><a href="services.html">Services</a><a href="employers.html">For Employers</a><a href="premium.html">Premium</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="apply.html">Apply</a><a href="login.html">Candidate login</a></div>© 2026 Got UR Job · Connecting talent with opportunity · <a href="https://www.instagram.com/goturjob.careers/" target="_blank" rel="noopener" style="color:#ffa11a;font-weight:600">Instagram</a> · <a href="https://www.linkedin.com/company/goturjobofficial/" target="_blank" rel="noopener" style="color:#ffa11a;font-weight:600">LinkedIn</a></footer>
+<button class="cbt" id="cbt" type="button" aria-label="Open chat assistant" aria-expanded="false">💬</button>
+<div class="cpn" id="cpn" role="dialog" aria-label="Got UR Job assistant" hidden><div class="chd"><div><b>Got UR Job Assistant</b><small>Ask about jobs, hiring and fees</small></div><button type="button" id="cx" aria-label="Close chat">×</button></div><div class="cms" id="cms" aria-live="polite"></div><div class="cqs" id="cqs"></div><div class="cin"><input id="ci" placeholder="Type your question" aria-label="Type your question" maxlength="300"><button type="button" id="cs" aria-label="Send">➤</button></div></div>
+<div class="vgw" id="vgw"><button type="button" class="vgb" id="vgb" aria-pressed="true" aria-label="Turn voice guide on or off"><span class="vi" id="vgi">🔊</span><span id="vgl">Voice guide</span></button>
+<button type="button" class="vgl" id="vglang" aria-label="Change voice language">हिंदी</button></div>
+<div class="vgt" id="vgt" role="status" aria-live="polite"></div>
+<script src="site.js"></script>
+<script type="module" src="dashboard.js"></script>
+</body></html>
