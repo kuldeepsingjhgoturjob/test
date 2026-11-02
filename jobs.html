@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Current Job Openings – Got UR Job</title>
+<meta name="description" content="Search current job openings by role, skill or city and apply with your resume. Free for candidates.">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="style.css">
+</head><body data-page="jobs">
+<header><div class="wrap"><a class="brand" href="index.html" aria-label="Got UR Job home"><img class="blogo" src="assets/logo.png" alt="Got UR Job – Connecting Talent With Opportunity" width="259" height="54"></a>
+<nav><a href="index.html">Home</a><a href="jobs.html" class="on" aria-current="page">Jobs</a><a href="services.html">Services</a><a href="employers.html">For Employers</a><a href="premium.html">Premium</a><a href="about.html">About</a><a href="contact.html">Contact</a><a class="nb" href="apply.html">Apply</a></nav><button class="mb" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button></div></header>
+<main id="top">
+<div class="phero"><div class="wrap"><div class="crumb"><a href="index.html">Home</a> / Jobs</div><h1>Current job openings</h1><p>Search by role, skill or city, then apply with your resume. Searching and applying is always free.</p></div></div>
+<section id="jobs" class="alt-bg"><div class="wrap"><div class="jbar"><input id="jq" placeholder="Job title or skill" aria-label="Job title or skill"><input id="jl" placeholder="City" aria-label="City"><button type="button" class="btn" id="jclr">Clear</button></div>
+<p id="jcount" class="sub" style="margin:0 0 18px"></p><div class="jobs" id="jl-list"></div></div></section>
+</main>
+<a class="wafab" href="https://wa.me/919991120155">WhatsApp us</a>
+<footer><div class="fnav"><a href="index.html">Home</a><a href="jobs.html">Jobs</a><a href="services.html">Services</a><a href="employers.html">For Employers</a><a href="premium.html">Premium</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="apply.html">Apply</a></div>© 2026 Got UR Job · Connecting talent with opportunity · <a href="https://www.instagram.com/goturjob.careers/" target="_blank" rel="noopener" style="color:#ffa11a;font-weight:600">Instagram</a> · <a href="https://www.linkedin.com/company/goturjobofficial/" target="_blank" rel="noopener" style="color:#ffa11a;font-weight:600">LinkedIn</a></footer>
+<script>
+var JOBS=[];
+(function(){var q=document.getElementById('jq'),l=document.getElementById('jl'),list=document.getElementById('jl-list'),cnt=document.getElementById('jcount');
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function norm(j){return{id:j.id,t:j.title,c:j.company,l:j.city,e:j.exp,s:j.salary,a:j.age,ed:j.education,pf:j.pf,esi:j.esi,ins:j.insurance,ad:j.address,ph:j.phone,k:[j.title,j.company,j.city,j.education].join(' ')}}
+function tel(p){var d=String(p||'').replace(/[^\d+]/g,'');if(!d)return'';if(d.charAt(0)!=='+')d=d.length===10?'+91'+d:'+'+d;return d}
+function card(j){var tg=[j.e,j.a,j.ed].filter(Boolean).map(function(x){return'<span>'+esc(x)+'</span>'}).join(''),bn=[j.pf&&'PF',j.esi&&'ESI',j.ins&&'Insurance'].filter(Boolean).map(function(x){return'<span>✓ '+x+'</span>'}).join(''),t=tel(j.ph);
+return'<div class="job"><h3>'+esc(j.t)+'</h3><div class="meta">Hiring for <b>'+esc(j.c)+'</b> · '+esc(j.l)+'</div><div class="tags">'+tg+'</div>'+(j.s?'<div class="sal">'+esc(j.s)+'</div>':'')+(bn?'<div class="tags ben">'+bn+'</div>':'')+(j.ad?'<div class="meta">📍 '+esc(j.ad)+'</div>':'')+'<div class="jact">'+(t?'<a class="btn call" href="tel:'+esc(t)+'">📞 Call</a>':'')+'<button type="button" class="btn" data-ap="'+esc(j.id)+'">Apply with resume</button></div><form class="ap" hidden data-job="'+esc(j.id)+'"><input name="name" placeholder="Your full name *" required><input name="phone" type="tel" placeholder="Phone / WhatsApp *" required><input name="email" type="email" placeholder="Email"><label class="fl">Resume (PDF or Word, up to 4 MB) *<input type="file" name="resume" accept=".pdf,.doc,.docx" required></label><button class="btn" type="submit">Submit application</button><p class="msg" role="alert"></p></form></div>'}
+function render(){var w=q.value.toLowerCase().split(/\s+/).filter(Boolean),lc=l.value.toLowerCase().trim();
+var r=JOBS.filter(function(j){var hay=j.k.toLowerCase();return w.every(function(x){return hay.indexOf(x)>-1})&&(!lc||String(j.l).toLowerCase().indexOf(lc)>-1)});
+cnt.textContent=r.length?('Showing '+r.length+' of '+JOBS.length+' openings'):'';
+if(!r.length){list.innerHTML='<div class="none" style="grid-column:1/-1"><b>'+(JOBS.length?'No matching openings right now.':'No openings are listed right now.')+'</b><p style="margin:8px 0 16px">Send us your profile and we will contact you when a suitable role comes up.</p><button type="button" class="btn" data-prof="1">Send my profile</button></div>';return}
+list.innerHTML=r.map(card).join('')}
+list.addEventListener('click',function(e){var b=e.target.closest('[data-ap]');if(b){var f=b.closest('.job').querySelector('form.ap');f.hidden=!f.hidden;return}
+if(e.target.closest('[data-prof]')){location.href='apply.html#job'}});
+list.addEventListener('submit',function(e){e.preventDefault();var f=e.target,m=f.querySelector('.msg'),fd=new FormData(f),btn=f.querySelector('button[type=submit]');fd.append('jobId',f.getAttribute('data-job'));
+var file=fd.get('resume');if(!file||!file.size){m.textContent='Please choose your resume.';return}if(file.size>4*1024*1024){m.textContent='Resume must be 4 MB or smaller.';return}
+btn.disabled=true;m.textContent='Sending…';
+fetch('/api/apply',{method:'POST',body:fd}).then(function(r){return r.json().then(function(d){if(!r.ok)throw new Error(d.error||'Could not send. Please try again.');return d})}).then(function(){m.textContent='Applied! We will contact you soon.';f.reset()}).catch(function(err){btn.disabled=false;m.textContent=(err.message&&err.message.indexOf('JSON')<0&&err.message.indexOf('Unexpected')<0)?err.message:'Could not send right now. Please message us on WhatsApp.'})});
+q.oninput=l.oninput=render;
+document.getElementById('jclr').onclick=function(){q.value='';l.value='';render()};
+var P=new URLSearchParams(location.search);if(P.get('q'))q.value=P.get('q');if(P.get('l'))l.value=P.get('l');
+render();
+fetch('/api/jobs').then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){JOBS=(d.jobs||[]).map(norm);render()}).catch(function(){})})();
+</script><button class="cbt" id="cbt" type="button" aria-label="Open chat assistant" aria-expanded="false">💬</button>
+<div class="cpn" id="cpn" role="dialog" aria-label="Got UR Job assistant" hidden><div class="chd"><div><b>Got UR Job Assistant</b><small>Ask about jobs, hiring and fees</small></div><button type="button" id="cx" aria-label="Close chat">×</button></div><div class="cms" id="cms" aria-live="polite"></div><div class="cqs" id="cqs"></div><div class="cin"><input id="ci" placeholder="Type your question" aria-label="Type your question" maxlength="300"><button type="button" id="cs" aria-label="Send">➤</button></div></div>
+
+<div class="vgw" id="vgw"><button type="button" class="vgb" id="vgb" aria-pressed="true" aria-label="Turn voice guide on or off"><span class="vi" id="vgi">🔊</span><span id="vgl">Voice guide</span></button>
+<button type="button" class="vgl" id="vglang" aria-label="Change voice language">हिंदी</button></div>
+<div class="vgt" id="vgt" role="status" aria-live="polite"></div>
+
+<script src="site.js"></script>
+</body></html>
